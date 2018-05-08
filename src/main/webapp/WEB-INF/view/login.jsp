@@ -38,6 +38,7 @@
 				<label for="remember-me">Remember Me?</label> <input type="checkbox"
 					id="remember-me" name="remember-me" />
 			</p>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<div>
 				<button type="submit" class="btn">Log in</button>
 			</div>
