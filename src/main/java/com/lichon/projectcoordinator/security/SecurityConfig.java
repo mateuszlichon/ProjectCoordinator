@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -17,12 +18,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private DataSource dataSource;
 	
 	@Autowired
+	private BCryptPasswordEncoder bcryptEncoder;
+	
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 //		.inMemoryAuthentication()
 //		.withUser("user").password("password").roles("USER").and()
 //		.withUser("admin").password("password").roles("USER", "ADMIN");
-		.jdbcAuthentication().dataSource(dataSource);
+		.jdbcAuthentication().dataSource(dataSource)
+		.passwordEncoder(bcryptEncoder);
 	}
 	
 	@Override
