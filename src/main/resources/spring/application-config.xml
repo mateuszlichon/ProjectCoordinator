@@ -9,6 +9,8 @@
 
 	<context:property-placeholder location="classpath*:spring/*.properties"/>
 
+	<bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${database.driverClassName}"></property>
 		<property name="url" value="${database.url}"></property>
