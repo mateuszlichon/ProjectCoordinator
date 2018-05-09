@@ -8,5 +8,6 @@
 </head>
 <body>
 	<p>Welcome to admin section</p>
+	<a href="./">back</a>
 </body>
 </html>
