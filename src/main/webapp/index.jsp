@@ -14,7 +14,7 @@
 <title>Welcome</title>
 </head>
 <body>
-	Username: <b><sec:authentication property="principal.username"/></b>
+	<p>Username: <b><sec:authentication property="principal.username"/></b></p>
 	<c:url value="/showMessage.html" var="messageUrl" />
 	<a href="./admin">Admin</a>
 
