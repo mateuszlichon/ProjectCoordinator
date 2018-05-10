@@ -8,13 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class Users implements UserDetails {
 
+	private static final long serialVersionUID = -3090950600086804816L;
 	private String username;
 	private String password;
 	private Set<Authorities> authorities;
-	
+
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.authorities;
 	}
 
 	public String getPassword() {
@@ -39,6 +39,18 @@ public class Users implements UserDetails {
 
 	public boolean isEnabled() {
 		return true;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setAuthorities(Set<Authorities> authorities) {
+		this.authorities = authorities;
 	}
 
 }
