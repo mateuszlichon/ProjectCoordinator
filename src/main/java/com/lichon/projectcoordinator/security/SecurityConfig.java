@@ -33,10 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		.withUser("user").password("password").roles("USER").and()
 //		.withUser("admin").password("password").roles("USER", "ADMIN");
 //		IN DB
-//		.jdbcAuthentication().dataSource(dataSource)
-//		.passwordEncoder(bcryptEncoder);
-		.userDetailsService(userDao)
+		.jdbcAuthentication().dataSource(dataSource)
 		.passwordEncoder(bcryptEncoder);
+//		.userDetailsService(userDao)
+//		.passwordEncoder(bcryptEncoder);
 	}
 	
 	@Override
