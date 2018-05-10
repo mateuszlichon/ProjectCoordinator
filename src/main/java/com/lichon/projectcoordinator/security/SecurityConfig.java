@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.lichon.projectcoordinator.dao.UserDao;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -21,12 +23,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private BCryptPasswordEncoder bcryptEncoder;
 	
 	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth
+//		IN MEMORY
 //		.inMemoryAuthentication()
 //		.withUser("user").password("password").roles("USER").and()
 //		.withUser("admin").password("password").roles("USER", "ADMIN");
-		.jdbcAuthentication().dataSource(dataSource)
+//		IN DB
+//		.jdbcAuthentication().dataSource(dataSource)
+//		.passwordEncoder(bcryptEncoder);
+		.userDetailsService(userDao)
 		.passwordEncoder(bcryptEncoder);
 	}
 	
